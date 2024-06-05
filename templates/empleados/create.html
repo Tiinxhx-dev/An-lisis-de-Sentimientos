@@ -1,14 +1,19 @@
-<form method="post" action="" enctype="multipart/form-data">
-
-    Nombre:
-    <input type="text" name="txtNombre" id="txtNombre">
-    <br>
-    Correo:
-    <input type="text" name="txtCorreo" id="txtCorreo">
-    <br>
-    Foto:
-    <input type="file" name="txtFoto" id="txtFoto">
-    <br>
-    <input type="submit" value="Agregar">
-
-</form>
+<!-- empleados/create.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Empleado</title>
+</head>
+<body>
+    <h1>Crear Empleado</h1>
+    <form action="/store" method="POST" enctype="multipart/form-data">
+        <label for="txtNombre">Nombre:</label>
+        <input type="text" id="txtNombre" name="txtNombre" required><br>
+        <label for="txtCorreo">Correo:</label>
+        <input type="email" id="txtCorreo" name="txtCorreo" required><br>
+        <label for="txtFoto">Foto:</label>
+        <input type="file" id="txtFoto" name="txtFoto" required><br>
+        <input type="submit" value="Crear">
+    </form>
+</body>
+</html>
