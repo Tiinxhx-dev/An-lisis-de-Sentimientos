@@ -1,0 +1,27 @@
+
+
+{% include 'header.html' %}
+
+
+{% for empleado in empleados %}
+    
+    <form action="/update" method="POST" enctype="multipart/form-data">
+        
+        <label for="txtID">ID:</label>
+        <span>{{empleado[0]}}</span>
+        <input type="hidden" value="{{empleado[0]}}" name="txtID" id="txtID"><br>
+
+        <label for="txtNombre">Nombre:</label>
+        <input type="text" id="txtNombre" value="{{empleado[1]}}" name="txtNombre" required><br>
+
+        <label for="txtCorreo">Correo:</label>
+        <input type="email" id="txtCorreo" value="{{empleado[2]}}" name="txtCorreo" required><br>
+
+        <label for="txtFoto">Foto:</label>{{empleado[3]}}        
+        <input type="file" id="txtFoto" value="{{empleado[3]}}" name="txtFoto" required><br>
+
+        <input type="submit" value="Crear">
+    </form>
+
+{% endfor %}
+{% include 'footer.html' %}
