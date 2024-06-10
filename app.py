@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, send_from_directory
+from flask import Flask, render_template, request, redirect, send_from_directory, url_for, flash
 from flask_mysqldb import MySQL
 from datetime import datetime
 import os
 
 app = Flask(__name__)
+app.secret_key="tiinxh"
 
 mysql = MySQL()
 app.config['MYSQL_HOST'] = 'localhost'
@@ -123,6 +124,9 @@ def storage():
     
     _foto = request.files["txtFoto"]
     
+    if _nombre == "" or _correo == "" or _foto == "":
+        flash("Completar todos los campos")
+        return redirect(url_for("create"))
     now = datetime.now() 
     tiempo = now.strftime("%Y%H%M%S")
     if _foto.filename != "":

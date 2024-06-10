@@ -1,17 +1,54 @@
 {% include 'header.html' %}
+
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    </div>
+{% endif %}  
+
+{% endwith %}
+
 <head>
     <title>Crear Empleado</title>
 </head>
 <body>
     <h1>Crear Empleado</h1>
     <form action="/store" method="POST" enctype="multipart/form-data">
-        <label for="txtNombre">Nombre:</label>
-        <input type="text" id="txtNombre" name="txtNombre" required><br>
-        <label for="txtCorreo">Correo:</label>
-        <input type="email" id="txtCorreo" name="txtCorreo" required><br>
-        <label for="txtFoto">Foto:</label>
-        <input type="file" id="txtFoto" name="txtFoto" required><br>
-        <input type="submit" value="Crear">
+        <div class="card">
+            <div class="card-header">
+                Ingresar empledos
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Datos del empleado</h5>
+                <p class="card-text">
+                    <div class="form-group">
+                        <label for="txtNombre">Nombre:</label>
+                        <input id="txtNombre" class="form-control" type="text" name="txtNombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCorreo">Correo:</label>
+                        <input id="txtCorreo" class="form-control" type="text" name="txtCorreo">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFoto">Foto:</label>
+                        <input id="txtFoto" class="form-control" type="file" name="txtFoto">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Crear" class="btn btn-success">
+                        <a href="{{url_for('index') }}" class="btn btn-primary">regresar</a>
+                    </div>
+                    
+                    
+                </p>
+            </div>
+        </div>
+
+
+        
     </form>
 </body>
 {% include 'footer.html' %}
